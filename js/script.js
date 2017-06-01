@@ -1,7 +1,12 @@
+//===============//
+// Three.js code
+//===============//
+
 
 // Canvas
-const WIDTH = window.innerWidth;
-const HEIGHT = window.innerHeight;
+let WIDTH = window.innerWidth;
+let HEIGHT = window.innerHeight;
+let ASPECT = WIDTH / HEIGHT;
 const scene = new THREE.Scene();
 const container = document.querySelector("#canvas-container");
 
@@ -10,19 +15,22 @@ renderer.setSize( window.innerWidth * .95 , window.innerHeight * .85);
 container.appendChild( renderer.domElement );
 
 
+
+
+
 // Camera
 const VIEW_ANGLE = 70;
-const ASPECT = WIDTH / HEIGHT;
 const NEAR = 0.1;
 const FAR = 1000;
-const camera = new THREE.PerspectiveCamera(
+let camera = new THREE.PerspectiveCamera(
   VIEW_ANGLE,
-  WIDTH / HEIGHT,
+  ASPECT,
   NEAR,
   FAR
 );
 camera.position.y = -40;
 camera.position.z = 100;
+
 
 
 
@@ -121,4 +129,27 @@ function render() {
 }
 
 render();
+
+
+
+//===============//
+// General JS
+//===============//
+
+function resize() {
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    renderer.setSize( w * .95 , h * .85);
+    camera = new THREE.PerspectiveCamera(
+      VIEW_ANGLE,
+      w / h,
+      NEAR,
+      FAR
+    );
+    // document.getElementById("demo").innerHTML = txt;
+}
+
+
+
+
 
