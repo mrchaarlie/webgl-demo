@@ -5,7 +5,7 @@ const HEIGHT = window.innerHeight;
 const scene = new THREE.Scene();
 const container = document.querySelector("#canvas-container");
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer( { antialias: true } );
 renderer.setSize( window.innerWidth * .95 , window.innerHeight * .85);
 container.appendChild( renderer.domElement );
 
